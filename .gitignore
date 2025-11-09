@@ -1,0 +1,7 @@
+.gitattributes
+compile_*
+.vscode
+*.def
+*.exe
+pep_tool
+pep_tool_debug

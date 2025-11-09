@@ -1,0 +1,7 @@
+framework
+	H-language/H
+
+libraries
+	ENDESGA/pep
+	nothings/stb
+	H-language/H_tool
