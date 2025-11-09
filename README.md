@@ -2,6 +2,8 @@
   <img width="725" height="383" alt="pep_logo" src="https://github.com/user-attachments/assets/e619c440-4b0d-40c6-9274-86ee163162ad" />
 </p>
 
+### [download the latest here](https://github.com/ENDESGA/pep_tool/releases/latest)
+
 ```
 usage: pep_tool [channel_bits:1/2/4/8] <input> [<output>]
 
