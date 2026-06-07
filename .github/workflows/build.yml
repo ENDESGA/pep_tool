@@ -1,21 +1,10 @@
-################################################################
-##
-##  H project build script, via altar
-##
-##  author(s):
-##  ENDESGA - https://x.com/ENDESGA | https://bsky.app/profile/endesga.bsky.social
-##
-##  https://github.com/H-language/altar
-##  2025 - CC0 - FOSS forever
-##
-
 name: build
 on: workflow_dispatch
 permissions: { contents: write }
 
 env:
   PROGRAM_NAME: "pep_tool"
-  PROGRAM_VERSION: "0.1.0"
+  PROGRAM_VERSION: "0.6.0"
 
 jobs:
   build:
@@ -24,7 +13,7 @@ jobs:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: checkout repository
+      - name: setup structure
         uses: actions/checkout@v4
         with:
           path: projects/${{ env.PROGRAM_NAME }}
@@ -34,22 +23,24 @@ jobs:
         run: |
           curl -L https://github.com/H-language/altar/releases/latest/download/altar${{ runner.os == 'Windows' && '.exe' || '' }} -O
           ${{ runner.os == 'Linux' && 'chmod +x altar' || '' }}
-          
+
       - name: setup project with altar
         shell: bash
         run: |
-          ./altar${{ runner.os == 'Windows' && '.exe' || '' }} defaults projects setup ${{ env.PROGRAM_NAME }} exit
-          
+          ./altar${{ runner.os == 'Windows' && '.exe' || '' }} cli defaults projects setup ${{ env.PROGRAM_NAME }}
+
       - name: compile
         shell: bash
         run: |
           cd projects/${{ env.PROGRAM_NAME }} && ./compile_release.${{ runner.os == 'Windows' && 'bat' || 'sh' }} && cd ../..
-          
+
       - name: upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.PROGRAM_NAME }}-${{ runner.os }}
-          path: projects/${{ env.PROGRAM_NAME }}/${{ env.PROGRAM_NAME }}${{ runner.os == 'Windows' && '.exe' || '' }}
+          path: |
+            projects/${{ env.PROGRAM_NAME }}/${{ env.PROGRAM_NAME }}${{ runner.os == 'Windows' && '.exe' || '' }}
+            projects/${{ env.PROGRAM_NAME }}/${{ env.PROGRAM_NAME }}_uncompressed${{ runner.os == 'Windows' && '.exe' || '' }}
 
   release:
     needs: build
@@ -57,7 +48,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with: { path: artifacts/ }
-        
+
       - uses: softprops/action-gh-release@v2
         with:
           files: artifacts/*/*
@@ -67,7 +58,7 @@ jobs:
             # version ${{ env.PROGRAM_VERSION }}
 
             download from the appropriate link for your operating system:
-            
+
             ## [${{ env.PROGRAM_NAME }} for Linux](https://github.com/${{ github.repository }}/releases/download/${{ env.PROGRAM_VERSION }}/${{ env.PROGRAM_NAME }})
-            
+
             ## [${{ env.PROGRAM_NAME }} for Windows](https://github.com/${{ github.repository }}/releases/download/${{ env.PROGRAM_VERSION }}/${{ env.PROGRAM_NAME }}.exe)
