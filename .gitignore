@@ -1,7 +1,9 @@
-.gitattributes
 compile_*
 .vscode
 *.def
 *.exe
+*.rc
+*.ico
 pep_tool
 pep_tool_debug
+pep_tool_uncompressed

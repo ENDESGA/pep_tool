@@ -4,4 +4,7 @@ framework
 libraries
 	ENDESGA/pep
 	nothings/stb
-	H-language/H_tool
+
+properties
+	ENDESGA
+	0.6.0
