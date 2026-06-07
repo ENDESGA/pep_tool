@@ -15,7 +15,7 @@ input formats:
 	pep, jpg, bmp, tga, png, gif (first frame), pnm, pic
 
 output formats:
-	pep, jpg, bmp, tga, png, (h [embeded])
+	pep, jpg, bmp, tga, png, (h [embedded])
 
 examples:
 	pep_tool channel_bits:2 image.png (makes image.pep with 2bits/channel)
