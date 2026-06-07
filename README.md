@@ -1,10 +1,10 @@
 <div align="center">
 	<picture><img width="960" height="540" src="https://github.com/user-attachments/assets/47f9ca92-be03-4e50-979e-d6dc9fdd535c" /></picture>
 
-### [click here to download](https://github.com/ENDESGA/pep_tool/releases/latest)
-</div>
-
 ---
+
+# [*click here to download*](https://github.com/ENDESGA/pep_tool/releases/latest)
+</div>
 
 ```
 usage: pep_tool [channel_bits:1/2/4/8] <input> [<output>]
