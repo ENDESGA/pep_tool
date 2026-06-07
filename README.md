@@ -1,8 +1,10 @@
-<p align="center">
-  <img width="725" height="383" alt="pep_logo" src="https://github.com/user-attachments/assets/e619c440-4b0d-40c6-9274-86ee163162ad" />
-</p>
+<div align="center">
+	<picture><img width="960" height="540" src="https://github.com/user-attachments/assets/47f9ca92-be03-4e50-979e-d6dc9fdd535c" /></picture>
 
-### [download the latest here](https://github.com/ENDESGA/pep_tool/releases/latest)
+### [click here to download](https://github.com/ENDESGA/pep_tool/releases/latest)
+</div>
+
+---
 
 ```
 usage: pep_tool [channel_bits:1/2/4/8] <input> [<output>]
@@ -10,16 +12,19 @@ usage: pep_tool [channel_bits:1/2/4/8] <input> [<output>]
 converts: image <-> pep | default: .image->.pep, .pep->.png
 
 input formats:
-  pep, jpg, bmp, tga, png, gif (first frame), pnm, pic
+	pep, jpg, bmp, tga, png, gif (first frame), pnm, pic
 
 output formats:
-  pep, jpg, bmp, tga, png
+	pep, jpg, bmp, tga, png, (h [embeded])
 
 examples:
-  pep_tool channel_bits:2 image.png (makes image.pep)
-  pep_tool image.pep output.jpg (makes output.jpg)
-  pep_tool image.bmp (makes image.pep with 8bits/channel)
+	pep_tool channel_bits:2 image.png (makes image.pep with 2bits/channel)
+	pep_tool image.pep output.jpg (makes output.jpg)
+	pep_tool image.bmp (makes image.pep with 8bits/channel)
+	pep_tool image.pep image_pep.h (embeds raw pep into h)
 ```
+
+---
 
 This uses the stb_image libraries to read/write most image formats to convert to ***pep*** format.
 
